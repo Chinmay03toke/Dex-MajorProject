@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebDex</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <section>
+        <div class="main">
+            <h1>WebDex</h1>
+            <div class="searchBx">
+                <input type="text" name="" class="query" value="" placeholder="Search anything here....">
+                
+            </div>
+            <div class="button">
+                <button class="searchBtn">WebDex Search</button>
+            </div>
+        </div>
+    </section>
+    <div class="video-container">
+        <div class="color-overlay"></div>
+        <video autoplay loop muted >
+            <source src="Background.mp4" width="300px" height="200px" alt="" >
+    
+        </video>
+    </div>
+
+    <div class="button-container2">
+        <button id="logout">Logout</button>
+      </div>
+      <div class="button-container3">
+        <button id="imagedex">ImageDex</button>
+      </div>
+    
+    <script>
+        let query = document.querySelector('.query');
+        let searchBtn = document.querySelector('.searchBtn');
+
+
+        searchBtn.onclick = function(){
+            let url = 'https://www.google.com/search?q='+query.value;
+            window.open(url,'_self');
+        }
+
+        
+document.getElementById("logout").addEventListener("click", function() {
+    // Redirect to another page
+    window.location.href = "Main2.html";
+  });
+  document.getElementById("imagedex").addEventListener("click", function() {
+    // Redirect to another page
+    window.location.href = "ImageDex.html";
+  });
+    </script>
+</body>
+</html>

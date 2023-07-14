@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image search Engine</title>
+   
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        box-sizing: border-box;
+    }
+    body{
+        background-image: linear-gradient(black,darkgrey ,darkgrey,grey, grey,lightgrey,white);
+        color: white;
+        margin: 0;
+        padding: 0;
+        
+    }
+    h1{
+        text-align: center;
+        margin: 100px auto 50px;
+        font-weight: 600;
+        text-shadow: 5px 5px black;
+        font-size: 50px;
+        /* animation-name: colorchange;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+         */
+        
+    }
+    form{
+        width: 90%;
+        max-width: 600px;
+        margin: auto;
+        height: 80px;
+        background: lightgrey;
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+    }
+    form input{
+        flex: 1;
+        height: 100%;
+        border: 0;
+        outline: 0;
+        background:transparent;
+        color: black;
+        font-size: 18px;
+        padding: 0 30px;
+    }
+    form button{
+        padding: 0 40px;
+        height: 100%;
+        background: grey;
+        color: white;
+        font-size: 18px;
+        border: 0;
+        outline: 0;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        cursor: pointer;
+    }
+    ::placeholder{
+        color: white;
+        font-size: 18px;
+    }
+    #show-more-btn{
+        background-color:grey;
+        color: white;
+        border: 0;
+        outline: 0;
+        padding: 10px 40px;
+        border-radius: 4px;
+        margin: 10px auto 100px;
+        cursor: pointer;
+        display: none;
+    }
+    #search-result{
+        width: 80%;
+        margin: 100px auto 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 40px;
+    
+    }
+    #search-result img{
+        width: 100%;
+        height: 230px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+    
+    .video-container{
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        z-index: -6;
+        left:0;
+        top: 0;
+        
+    
+    }
+    
+    .video-container video{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .button-container2 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 20px;
+        
+      }
+
+      button#logout {
+        padding: 10px 11px;
+        background-color: lightgrey;
+        font-size: 20px;
+        border-radius: 8px;
+        color: grey;
+    }
+    .button-container3 {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 80px;
+        margin-right: 20px;
+        
+      }
+    button#webdex{
+        padding: 10px 11px;
+        background-color: lightgrey;
+        font-size: 20px;
+        border-radius: 8px;
+        color: grey;
+    
+    }
+    
+</style>
+
+<body>
+
+<!-- class="text-design animation-2" -->
+<h1 >ImageDex</h1>
+
+<form id="search-form">
+    <input type="text" id="search-box" placeholder="Search anything here.....">
+    <button>Search</button>
+</form>
+
+<div id="search-result"></div>
+<button id="show-more-btn">Show more</button>
+
+
+<div class="video-container">
+    <div class="color-overlay"></div>
+    <video autoplay loop muted >
+        <source src="Background.mp4" width="300px" height="200px" alt="" >
+
+    </video>
+</div>
+
+<div class="button-container2">
+    <button id="logout">Logout</button>
+  </div>
+
+  <div class="button-container3">
+    <button id="webdex">WebDex</button>
+  </div>
+
+
+<script>
+    const accessKey = "VdUxf-ibnaIhd9y914BlSHToNBdOoV938eF-Cs1duOA";
+
+
+const searchForm = document.getElementById("search-form");
+const searchBox = document.getElementById("search-box");
+const searchResult = document.getElementById("search-result");
+const showMoreBtn = document.getElementById("show-more-btn");
+
+
+let keyword = "";
+let page = 1;
+
+async function searchImages(){
+    keyword = searchBox.value;
+    const url = `https://api.unsplash.com/search/photos?page=${page}&query=${keyword}&client_id=${accessKey}&per_page=12`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+    
+
+    if(page === 1){
+        searchResult.innerHTML = "";
+    }
+
+    const results = data.results;
+
+    results.map((result) => {
+        const image = document.createElement("img");
+        image.src = result.urls.small;
+        const imageLink = document.createElement("a");
+        imageLink.href = result.links.html;
+        imageLink.target = "_blank";
+
+        imageLink.appendChild(image);
+        searchResult.appendChild(imageLink);
+    })
+    showMoreBtn.style.display = "block";
+}
+
+searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    page = 1;
+    searchImages();
+})
+
+showMoreBtn.addEventListener("click",()=>{
+    page++;
+    searchImages();
+})
+
+document.getElementById("logout").addEventListener("click", function() {
+    // Redirect to another page
+    window.location.href = "Main2.html";
+  });
+
+  document.getElementById("webdex").addEventListener("click", function() {
+    // Redirect to another page
+    window.location.href = "WebDex.html";
+  });
+
+</script>
+
+</body>
+</html>

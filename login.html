@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS styles for the form */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+            font-size: 20px;
+            
+        }
+
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            width: 93%;
+            padding: 10px;
+            margin-bottom: 10px;
+        
+        }
+
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: gray;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        h1{
+            color: white;
+            text-shadow: 2px 2px black;
+        }
+        .video-container{
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            z-index: -6;
+            left:0;
+            top: 0;
+            
+        
+        }
+        
+        .video-container video{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <div class="form-container">
+        <h1 align="center">Login..</h1>
+        <form action="login.php" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter email">
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="pass" placeholder="Enter Password">
+            
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <div class="video-container">
+        <div class="color-overlay"></div>
+        <video autoplay loop muted >
+            <source src="Background.mp4" width="300px" height="200px" alt="" >
+    
+        </video>
+    </div>
+</body>
+</html>

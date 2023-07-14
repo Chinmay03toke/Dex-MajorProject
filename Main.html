@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dex</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: white;
+      font-size: 40px;
+      margin-bottom: 20px;
+      margin-top: 200px;
+      text-shadow: 4px 4px black;
+      margin-right: 40px;
+    }
+
+    button {
+      padding: 30px 30px;
+      font-size: 15px;
+      background-color: lightgray;
+      color: grey;
+      border: none;
+      cursor: pointer;
+      margin-right: 40px;
+      margin-top: 30px;
+      border-radius: 20px;
+    }
+
+    button:hover {
+      background-color: darkgray;
+    }
+    .video-container{
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        z-index: -6;
+        left:0;
+        top: 0;
+        
+    }
+    
+    .video-container video{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+   
+  </style>
+</head>
+<body>
+  <h1>Welcome to Dex</h1>
+
+
+  
+  <button type="button" name="webdex" id="webdex">WebDex</button>
+  <button type="button" name="imagedex" id="imagedex">ImageDex</button>
+
+  <div class="video-container">
+    <div class="color-overlay"></div>
+    <video autoplay loop muted >
+        <source src="Background.mp4" width="300px" height="200px" alt="" >
+
+    </video>
+</div>
+
+</body>
+<script>
+  document.getElementById("webdex").addEventListener("click", function() {
+    // Redirect to another page
+    window.location.href = "WebDex.html";
+  });
+  document.getElementById("imagedex").addEventListener("click", function() {
+    // Redirect to another page
+    window.location.href = "ImageDex.html";
+  });
+</script>
+</html>

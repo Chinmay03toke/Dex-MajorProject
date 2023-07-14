@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS styles for the form */
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            color: white;
+            font-size: 20px;
+            
+        }
+        
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            width: 94%;
+            padding: 10px;
+            margin-bottom: 10px;
+            
+        }
+        
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: gray;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        h1{
+            color: white;
+            text-shadow:4px 4px black;
+            margin-bottom: 60px;
+            margin-top: 50px;
+            font-size: 40px;
+        }
+        .video-container{
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            z-index: -6;
+            left:0;
+            top: 0;
+            
+        
+        }
+        
+        .video-container video{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center">SignUp to Dex</h1>
+    <div class="form-container">
+        <form action="register.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter name">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter email">
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password">
+            
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter phone number">
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="video-container">
+        <div class="color-overlay"></div>
+        <video autoplay loop muted >
+            <source src="Background.mp4" width="300px" height="200px" alt="" >
+    
+        </video>
+    </div>
+</body>
+</html>
